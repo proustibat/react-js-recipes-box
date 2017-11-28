@@ -1,4 +1,4 @@
 module.exports = {
-  // "extends": ["standard", "standard-react"]
-  "extends": ["react"]
+  "extends": ["standard-react"]
+  // "extends": ["react"]
 };

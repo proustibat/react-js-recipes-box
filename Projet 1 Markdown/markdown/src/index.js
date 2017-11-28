@@ -1,13 +1,14 @@
-import React from 'react';
-import { render } from 'react-dom';
+// React
+import React        from 'react';
+import { render }   from 'react-dom';
+
+// js libs
+import { sampleText }   from './sampleText';
+import marked           from 'marked';
 
 // css
 import './style/css/bootstrap.min.css';
 import './index.css';
-
-// js
-import { sampleText } from './sampleText';
-import marked from 'marked';
 
 class App extends React.Component {
 
@@ -15,43 +16,45 @@ class App extends React.Component {
         text: sampleText
     };
 
-    componentWillMount () {
-        const localStorageText = localStorage.getItem('text');
-        if(typeof localStorageText !== 'undefined') {
-            this.setState({ text: localStorageText });
+    componentWillMount() {
+        const localStorageText = localStorage.getItem( 'text' );
+        if( localStorageText
+            && typeof localStorageText !== 'undefined'
+            && localStorageText.replace(/\s/g,'').length > 0 ) {
+            this.setState( { text: localStorageText } );
         }
     }
 
-    componentWillUpdate (nextProps, nextState) {
-        localStorage.setItem('text', nextState.text);
+    componentWillUpdate( nextProps, nextState ) {
+        localStorage.setItem( 'text', nextState.text );
     }
 
-    editText (event) {
+    editText( event ) {
         this.setState({
             text: event.target.value
         });
     }
 
-    renderText () {
+    renderText() {
         return {
-            __html: marked(this.state.text, { sanitize: true })
+            __html: marked( this.state.text, { sanitize: true } )
         };
     }
 
-    render () {
+    render() {
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-sm-6">
                         <textarea
-                            value={this.state.text}
+                            value={ this.state.text }
                             rows="35"
                             className="form-control"
-                            onChange={this.editText.bind(this)}
+                            onChange={ this.editText.bind( this ) }
                         />
                     </div>
                     <div className="col-sm-6">
-                        <div dangerouslySetInnerHTML={this.renderText()}/>
+                        <div dangerouslySetInnerHTML={ this.renderText() }/>
                     </div>
                 </div>
             </div>
@@ -61,6 +64,5 @@ class App extends React.Component {
 
 render(
     <App/>,
-    document.getElementById('root')
+    document.getElementById( 'root' )
 );
-
