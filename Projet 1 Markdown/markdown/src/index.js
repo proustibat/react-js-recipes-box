@@ -15,14 +15,17 @@ class App extends React.Component {
         text: sampleText
     };
 
-    editText = event => {
-        this.setState({ text: event.target.value });
-    };
+    editText (event) {
+        this.setState({
+            text: event.target.value
+        });
+    }
 
-    renderText = text => {
-        const renderText = marked(text, { sanitize: true });
-        return { __html: renderText };
-    };
+    renderText () {
+        return {
+            __html: marked(this.state.text, { sanitize: true })
+        };
+    }
 
     render () {
         return (
@@ -33,11 +36,11 @@ class App extends React.Component {
                             value={this.state.text}
                             rows="35"
                             className="form-control"
-                            onChange={e => this.editText(e)}
+                            onChange={this.editText.bind(this)}
                         />
                     </div>
                     <div className="col-sm-6">
-                        <div dangerouslySetInnerHTML={this.renderText(this.state.text)}/>
+                        <div dangerouslySetInnerHTML={this.renderText()}/>
                     </div>
                 </div>
             </div>
