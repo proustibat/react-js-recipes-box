@@ -15,6 +15,17 @@ class App extends React.Component {
         text: sampleText
     };
 
+    componentWillMount () {
+        const localStorageText = localStorage.getItem('text');
+        if(typeof localStorageText !== 'undefined') {
+            this.setState({ text: localStorageText });
+        }
+    }
+
+    componentWillUpdate (nextProps, nextState) {
+        localStorage.setItem('text', nextState.text);
+    }
+
     editText (event) {
         this.setState({
             text: event.target.value
