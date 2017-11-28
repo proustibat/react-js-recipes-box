@@ -1,0 +1,13 @@
+// A mettre dans les règles de Firebase
+{
+  "rules": {
+    // Tout le monde peut lire mais pas écrire
+    ".read": true,
+    ".write": "!data.exists()",
+    "$room" : {
+      // Seul le propriétaire peut modifier sa boîte
+      ".read": true,
+      ".write": "newData.child('owner').val() === auth.uid"
+    }
+  }
+}
