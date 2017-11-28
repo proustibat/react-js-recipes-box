@@ -9,16 +9,21 @@ import './index.css';
 import { sampleText } from './sampleText';
 
 class App extends React.Component {
+
+    state = {
+        text: sampleText
+    };
+
     render () {
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-sm-6">
-                        <textarea value={sampleText} rows="35" className="form-control" />
+                        <textarea value={this.state.text} rows="35" className="form-control" />
                     </div>
                     <div className="col-sm-6">
                         <div>
-                            {sampleText}
+                            {this.state.text}
                         </div>
                     </div>
                 </div>
