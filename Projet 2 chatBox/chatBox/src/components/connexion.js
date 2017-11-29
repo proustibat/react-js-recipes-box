@@ -4,9 +4,18 @@ import React from 'react';
 class Connexion extends React.Component {
 
     goToChat( event ) {
-        // recuperer le pseudo
-        console.log(this.pseudoInput.value);
         event.preventDefault();
+
+        // recuperer le pseudo
+        const pseudo = this.pseudoInput.value;
+
+        // changer l'url
+        let url = `/pseudo/${pseudo}`;
+
+        console.log(url);
+
+        this.context.router.transitionTo(url);
+
     };
 
     render() {
@@ -22,6 +31,10 @@ class Connexion extends React.Component {
                 </form>
             </div>
         );
+    }
+
+    static contextTypes = {
+        router: React.PropTypes.object
     }
 }
 export default Connexion;
