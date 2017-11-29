@@ -1,6 +1,7 @@
 import React from 'react';
 import Formulaire from './formulaire';
 import Message from './messages';
+import database from '../database';
 
 class App extends React.Component {
 
@@ -8,8 +9,15 @@ class App extends React.Component {
         messages: {}
     };
 
+    componentWillMount() {
+        this.ref = database.syncState( '/', {
+            context: this,
+            state: 'messages'
+        });
+    }
+
     addMessage( message ) {
-        
+
         // copier le state
         const messages = { ...this.state.messages };
 
