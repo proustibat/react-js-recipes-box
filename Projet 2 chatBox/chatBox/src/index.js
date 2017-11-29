@@ -14,11 +14,22 @@ import './index.css';
 
 
 const Root = () => {
+
+    const MyApp = props => {
+        return (
+            <App
+                maxMessages="10"
+                { ...props }
+            />
+        );
+    };
+
+
     return (
         <BrowserRouter>
             <div>
                 <Match exactly pattern="/" component={Connexion} />
-                <Match pattern="/pseudo/:pseudo" component={App} />
+                <Match pattern="/pseudo/:pseudo" render={MyApp} />
                 <Miss component={NotFound} />
             </div>
         </BrowserRouter>

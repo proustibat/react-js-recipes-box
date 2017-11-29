@@ -14,6 +14,8 @@ class App extends React.Component {
             context: this,
             state: 'messages'
         });
+
+
     }
 
     addMessage( message ) {
@@ -27,13 +29,18 @@ class App extends React.Component {
         // creation du message unique
         messages[ `message-${ timestamp }` ] = message;
 
+        Object.keys( messages )
+            // selectionne les messages de la fin du tableau à la fin du tableau - le nombre maximum de messages
+            .slice( 0, -( parseInt( this.props.maxMessages, 10 ) ) )
+            // pour chaque message a supprimer, attribue une value null
+            .map( key => messages[ key ] = null );
+
         // met a jour le state
         this.setState( {  messages } );
 
     }
 
     render() {
-
         const messages = Object
             .keys( this.state.messages )
             .map( key =>
