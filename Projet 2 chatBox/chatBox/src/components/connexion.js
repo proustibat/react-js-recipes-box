@@ -4,6 +4,7 @@ import React from 'react';
 class Connexion extends React.Component {
 
     goToChat( event ) {
+
         event.preventDefault();
 
         // recuperer le pseudo
@@ -19,8 +20,9 @@ class Connexion extends React.Component {
     };
 
     render() {
+
         return (
-            <div className="connexionBox" onSubmit={ this.goToChat.bind(this) }>
+            <div className="connexionBox" onSubmit={ this.goToChat.bind( this ) }>
                 <form className="connexion">
                     <input type="text"
                         placeholder="Pseudo"
@@ -31,6 +33,7 @@ class Connexion extends React.Component {
                 </form>
             </div>
         );
+
     }
 
     static contextTypes = {
