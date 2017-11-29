@@ -32,7 +32,11 @@ class App extends React.Component {
                 <div className="messages">
                     <Message pseudo={ this.props.params.pseudo } />
                 </div>
-                <Formulaire addMessage={ this.addMessage.bind( this ) } />
+                <Formulaire
+                    addMessage={ this.addMessage.bind( this ) }
+                    pseudo={ this.props.params.pseudo }
+                    length="140"
+                />
             </div>
         );
     }

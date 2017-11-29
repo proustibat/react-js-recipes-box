@@ -13,8 +13,6 @@ class Connexion extends React.Component {
         // changer l'url
         let url = `/pseudo/${pseudo}`;
 
-        console.log(url);
-
         this.context.router.transitionTo(url);
 
     };
