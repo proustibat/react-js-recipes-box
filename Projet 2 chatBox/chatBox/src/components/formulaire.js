@@ -4,7 +4,7 @@ class Formulaire extends React.Component {
 
     state = {
       length: this.props.length
-    };
+    }
 
     createMessage( event ) {
 
@@ -37,11 +37,11 @@ class Formulaire extends React.Component {
             <form
                 className="form"
                 onSubmit={ this.createMessage.bind( this ) }
-                ref={ form=>this.messageForm = form }
+                ref={ form => this.messageForm = form }
             >
                 <textarea
                     required
-                    maxLength={this.props.length}
+                    maxLength={ this.props.length }
                     ref={ msg => this.message = msg }
                     onChange={ this.compteur.bind( this ) }
                 />
@@ -52,6 +52,12 @@ class Formulaire extends React.Component {
             </form>
         );
 
+    }
+
+    static propTypes = {
+        addMessage: React.PropTypes.func.isRequired,
+        pseudo: React.PropTypes.string.isRequired,
+        length: React.PropTypes.number.isRequired
     }
 
 }

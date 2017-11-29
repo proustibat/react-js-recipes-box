@@ -15,5 +15,9 @@ class Message extends React.Component {
         }
     }
 
+    static propTypes = {
+        details: React.PropTypes.object.isRequired
+    }
+
 }
 export default Message;

@@ -11,7 +11,7 @@ class App extends React.Component {
 
     state = {
         messages: {}
-    };
+    }
 
     componentWillMount() {
         this.ref = database.syncState( '/', {
@@ -40,9 +40,11 @@ class App extends React.Component {
         // creation du message unique
         messages[ `message-${ timestamp }` ] = message;
 
+
+        const maxMessages = this.props.maxMessages || 10;
         Object.keys( messages )
             // selectionne les messages de la fin du tableau à la fin du tableau - le nombre maximum de messages
-            .slice( 0, -( parseInt( this.props.maxMessages, 10 ) ) )
+            .slice( 0, -( maxMessages ) )
             // pour chaque message a supprimer, attribue une value null
             .map( key => messages[ key ] = null );
 
@@ -78,10 +80,15 @@ class App extends React.Component {
                 <Formulaire
                     addMessage={ this.addMessage.bind( this ) }
                     pseudo={ this.props.params.pseudo }
-                    length="140"
+                    length={ 200 }
                 />
             </div>
         );
+    }
+
+    static propTypes = {
+        params: React.PropTypes.object.isRequired,
+        maxMessages: React.PropTypes.number
     }
 }
 export default App;

@@ -18,7 +18,6 @@ const Root = () => {
     const MyApp = props => {
         return (
             <App
-                maxMessages="10"
                 { ...props }
             />
         );
