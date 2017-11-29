@@ -6,12 +6,12 @@ class App extends React.Component {
 
     render() {
         return (
-           <div className="box">
-               <div className="messages">
-                <Message />
-               </div>
-               <Formulaire />
-           </div>
+            <div className="box">
+                <div className="messages">
+                    <Message pseudo="proustibat" />
+                </div>
+                <Formulaire />
+            </div>
         );
     }
 }
