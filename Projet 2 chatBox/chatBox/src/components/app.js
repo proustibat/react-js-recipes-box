@@ -9,9 +9,7 @@ class App extends React.Component {
     };
 
     addMessage( message ) {
-
-        console.log('addMessage : ', message);
-
+        
         // copier le state
         const messages = { ...this.state.messages };
 
@@ -27,10 +25,19 @@ class App extends React.Component {
     }
 
     render() {
+
+        const messages = Object
+            .keys( this.state.messages )
+            .map( key =>
+                <Message
+                    key={ key }
+                    details={ this.state.messages[ key ] } />
+            );
+
         return (
             <div className="box">
                 <div className="messages">
-                    <Message pseudo={ this.props.params.pseudo } />
+                    { messages }
                 </div>
                 <Formulaire
                     addMessage={ this.addMessage.bind( this ) }
