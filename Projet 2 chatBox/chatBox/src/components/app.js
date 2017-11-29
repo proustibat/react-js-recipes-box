@@ -54,6 +54,7 @@ class App extends React.Component {
     }
 
     render() {
+
         const messages = Object
             .keys( this.state.messages )
             .map( key =>
@@ -87,8 +88,10 @@ class App extends React.Component {
     }
 
     static propTypes = {
-        params: React.PropTypes.object.isRequired,
-        maxMessages: React.PropTypes.number
+        maxMessages: React.PropTypes.number,
+        params: React.PropTypes.shape({
+            pseudo: React.PropTypes.string.isRequired
+        })
     }
 }
 export default App;

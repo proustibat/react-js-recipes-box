@@ -16,7 +16,10 @@ class Message extends React.Component {
     }
 
     static propTypes = {
-        details: React.PropTypes.object.isRequired
+        details: React.PropTypes.shape({
+            pseudo: React.PropTypes.string.isRequired,
+            message: React.PropTypes.string.isRequired
+        })
     }
 
 }
