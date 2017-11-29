@@ -24,13 +24,12 @@ const Root = () => {
         );
     };
 
-
     return (
         <BrowserRouter>
             <div>
-                <Match exactly pattern="/" component={Connexion} />
-                <Match pattern="/pseudo/:pseudo" render={MyApp} />
-                <Miss component={NotFound} />
+                <Match exactly pattern="/" component={ Connexion } />
+                <Match pattern="/pseudo/:pseudo" render={ MyApp } />
+                <Miss component={ NotFound } />
             </div>
         </BrowserRouter>
     );
