@@ -40,6 +40,12 @@ class App extends React.Component {
         this.setState( { recettes } );
     }
 
+    deleteRecipe( key ) {
+        const recettes = { ...this.state.recettes };
+        recettes[ key ] = null;
+        this.setState( { recettes } );
+    }
+
 
     render() {
 
@@ -60,6 +66,7 @@ class App extends React.Component {
                         loadSamples={ this.loadSamples.bind( this ) }
                         addRecipe={ this.addRecipe.bind( this ) }
                         updateRecipe={ this.updateRecipe.bind( this ) }
+                        deleteRecipe={ this.deleteRecipe.bind( this ) }
                     />
             </div>
         )

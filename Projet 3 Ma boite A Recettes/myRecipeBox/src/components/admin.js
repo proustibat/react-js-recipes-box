@@ -50,6 +50,7 @@ class Admin extends React.Component {
                     />
 
                 </form>
+                <button onClick={ this.props.deleteRecipe.bind( this, key ) }>Supprimer</button>
             </div>
         );
     }
@@ -77,6 +78,7 @@ class Admin extends React.Component {
         loadSamples: React.PropTypes.func.isRequired,
         addRecipe: React.PropTypes.func.isRequired,
         updateRecipe: React.PropTypes.func.isRequired,
+        deleteRecipe: React.PropTypes.func.isRequired,
     }
 
 }
