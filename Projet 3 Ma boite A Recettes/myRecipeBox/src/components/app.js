@@ -7,11 +7,21 @@ import { Header, Admin, Card } from '../components';
 // Recipes
 import samples from '../recettes';
 
+// database
+import database from '../database';
+
 class App extends React.Component {
 
     state = {
       recettes: {}
     };
+
+    componentWillMount() {
+        this.ref = database.syncState( `${ this.props.params.pseudo }/recettes`, {
+                context: this,
+                state: 'recettes'
+            });
+    }
 
     loadSamples() {
         this.setState( { recettes: samples } );
@@ -31,10 +41,14 @@ class App extends React.Component {
                 <div className="cards">
                     { cards }
                 </div>
-
-                <Admin loadSamples={ this.loadSamples.bind( this ) } />
+                { cards.length === 0 && <Admin loadSamples={ this.loadSamples.bind( this ) } /> }
             </div>
         )
+    }
+
+
+    componentWillUnMount() {
+       database.removeBinding( this.ref );
     }
 
     static propTypes = {
