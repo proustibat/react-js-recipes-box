@@ -34,6 +34,13 @@ class App extends React.Component {
         this.setState( { recettes } );
     }
 
+    updateRecipe( key, newRecette ) {
+        const recettes = { ...this.state.recettes };
+        recettes[ key ] = newRecette;
+        this.setState( { recettes } );
+    }
+
+
     render() {
 
         const cards = Object
@@ -49,8 +56,10 @@ class App extends React.Component {
                     { cards }
                 </div>
                     <Admin
+                        recettes={ this.state.recettes }
                         loadSamples={ this.loadSamples.bind( this ) }
                         addRecipe={ this.addRecipe.bind( this ) }
+                        updateRecipe={ this.updateRecipe.bind( this ) }
                     />
             </div>
         )
@@ -63,7 +72,7 @@ class App extends React.Component {
 
     static propTypes = {
         params: React.PropTypes.shape({
-            pseudo: React.PropTypes.string.isRequired
+            pseudo: React.PropTypes.string.isRequired,
         })
     }
 }
