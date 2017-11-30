@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Components
-import { Header, Admin, Card } from '../components';
+import { Header, Admin, Card } from './';
 
 // Recipes
 import samples from '../recettes';
@@ -27,6 +27,13 @@ class App extends React.Component {
         this.setState( { recettes: samples } );
     }
 
+    addRecipe( recette ) {
+        const recettes = { ...this.state.recettes };
+        const timestamp = Date.now();
+        recettes[ `recette-${ timestamp }` ] = recette;
+        this.setState( { recettes } );
+    }
+
     render() {
 
         const cards = Object
@@ -41,7 +48,10 @@ class App extends React.Component {
                 <div className="cards">
                     { cards }
                 </div>
-                { cards.length === 0 && <Admin loadSamples={ this.loadSamples.bind( this ) } /> }
+                    <Admin
+                        loadSamples={ this.loadSamples.bind( this ) }
+                        addRecipe={ this.addRecipe.bind( this ) }
+                    />
             </div>
         )
     }
