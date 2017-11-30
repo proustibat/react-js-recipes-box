@@ -2,9 +2,7 @@ import React        from 'react';
 import { render }   from 'react-dom';
 
 // components
-import App from './components/app';
-import Connexion from './components/connexion';
-import NotFound from './components/not-found';
+import { App, Connexion, NotFound } from './components';
 
 // router
 import { BrowserRouter, Match, Miss } from 'react-router';
