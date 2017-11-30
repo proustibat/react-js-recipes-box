@@ -7,3 +7,4 @@ export { default as NotFound }      from './not-found';
 export { default as Header }        from './header';
 export { default as Connexion }     from './connexion';
 export { default as Admin }         from './admin';
+export { default as Card }          from './card';

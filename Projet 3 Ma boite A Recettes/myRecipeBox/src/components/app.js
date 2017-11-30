@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Components
-import { Header, Admin } from '../components';
+import { Header, Admin, Card } from '../components';
 
 // Recipes
 import samples from '../recettes';
@@ -18,11 +18,18 @@ class App extends React.Component {
     }
 
     render() {
+
+        const cards = Object
+            .keys( this.state.recettes )
+            .map( key =>
+                 <Card key={ key } details={ this.state.recettes[ key ] } />
+            );
+
         return (
             <div className="box">
                 <Header pseudo={ this.props.params.pseudo } />
                 <div className="cards">
-                    <div className="card" />
+                    { cards }
                 </div>
 
                 <Admin loadSamples={ this.loadSamples.bind( this ) } />
