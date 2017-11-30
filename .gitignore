@@ -221,6 +221,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+build
 
 Projet 1 Markdown/fichiers
 Projet 2 chatBox/fichiers
