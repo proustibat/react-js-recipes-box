@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "private": true,
     "devDependencies": {
-        "pre-push": "^0.1.1",
         "react-scripts": "0.7.0",
         "shelljs": "^0.7.8",
         "surge": "^0.19.0"
@@ -22,10 +21,8 @@
         "eject": "react-scripts eject",
         "copy": "node bin/copy-for-deploy.js",
         "predeploy": "npm run build && npm run copy",
-        "deploy": "surge --project ./build --domain prstbt-recipe-box.surge.sh"
+        "deploy": "surge --project ./build --domain prstbt-recipe-box.surge.sh",
+        "push": "git push && npm run deploy"
     },
-    "pre-push": [
-        "deploy"
-    ],
     "homepage": "http://prstbt-my-recipe-box.surge.sh"
 }
