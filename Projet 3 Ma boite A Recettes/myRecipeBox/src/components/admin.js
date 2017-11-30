@@ -3,7 +3,21 @@ import React from 'react';
 // components
 import { AddRecipe } from './';
 
+// firebase
+import firebase from '../database';
+
+
+
 class Admin extends React.Component {
+
+    state = {
+      uid: null,
+      owner: null
+    };
+
+    componentDidMount() {
+        firebase.onAuth( user => user ? this.onLoginDone( null, { user } ) : false );
+    }
 
     onChangeRecipe( key, event ) {
         const recette = this.props.recettes[ key ];
@@ -55,7 +69,82 @@ class Admin extends React.Component {
         );
     }
 
+    renderLogin() {
+
+        return (
+            <div className="login">
+                <h2>Connecte toi pour créer tes recettes !</h2>
+                <button
+                    className="facebook-button"
+                    onClick={ this.login.bind(this, 'facebook') }
+                >
+                    Me connecter avec Facebook
+                </button>
+                <button
+                    className="twitter-button"
+                    onClick={ this.login.bind(this, 'twitter') }
+                >
+                    Me connecter avec Twitter
+                </button>
+            </div>
+        );
+    }
+
+    login( provider ) {
+        firebase.authWithOAuthPopup( provider, this.onLoginDone.bind( this ) );
+    }
+
+    logout() {
+        firebase.unauth();
+        this.setState({
+            uid: null
+        })
+    }
+
+    onLoginDone( err, authData ) {
+
+        if( err ) {
+            console.log( err );
+            return;
+        }
+
+        // Recuperer le nom du proprietaire de la base
+        const ownerRef = firebase.database().ref( this.props.currentPagePseudo );
+
+        // Demande a firebase si l'utilisateur a des recettes
+        ownerRef.once('value', snapshot => {
+
+            const data = snapshot.val() || {};
+
+            // si la page n'appartient a personne, on l'attribue a l'utilisateur
+            if( !data.owner ) {
+                ownerRef.set( { owner: authData.user.uid } );
+            }
+            this.setState({
+                uid: authData.user.uid,
+                owner: data.owner || authData.user.uid
+            })
+        });
+    }
+
     render() {
+
+        const logoutBtn = <button onClick={ this.logout.bind( this ) } >Logout</button>
+
+        // s'il existe un proprieteaire
+        if ( !this.state.uid ) {
+            return <div>{ this.renderLogin() }</div>;
+        }
+
+        // s'il existe mais que ce n'est pas le proprietaire
+        if( this.state.uid !== this.state.owner ) {
+            return (
+                <div className="login">
+                    { this.renderLogin() }
+                    <p>Vous n'etes pas le proprietaire de cette page</p>
+                </div>
+            );
+        }
 
         const adminCards = Object.keys( this.props.recettes ).map( this.renderAdmin.bind( this ) );
 
@@ -68,6 +157,7 @@ class Admin extends React.Component {
                 { adminCards }
                 <footer>
                     <button onClick={ this.props.loadSamples.bind( this ) }>Load Samples</button>
+                    { logoutBtn }
                 </footer>
             </div>
         );
@@ -79,6 +169,7 @@ class Admin extends React.Component {
         addRecipe: React.PropTypes.func.isRequired,
         updateRecipe: React.PropTypes.func.isRequired,
         deleteRecipe: React.PropTypes.func.isRequired,
+        currentPagePseudo: React.PropTypes.string.isRequired,
     }
 
 }

@@ -7,8 +7,8 @@ import { Header, Admin, Card } from './';
 // Recipes
 import samples from '../recettes';
 
-// database
-import database from '../database';
+// firebase
+import firebase from '../database';
 
 class App extends React.Component {
 
@@ -17,7 +17,7 @@ class App extends React.Component {
     };
 
     componentWillMount() {
-        this.ref = database.syncState( `${ this.props.params.pseudo }/recettes`, {
+        this.ref = firebase.syncState( `${ this.props.params.pseudo }/recettes`, {
                 context: this,
                 state: 'recettes'
             });
@@ -46,7 +46,6 @@ class App extends React.Component {
         this.setState( { recettes } );
     }
 
-
     render() {
 
         const cards = Object
@@ -62,6 +61,7 @@ class App extends React.Component {
                     { cards }
                 </div>
                     <Admin
+                        currentPagePseudo={this.props.params.pseudo}
                         recettes={ this.state.recettes }
                         loadSamples={ this.loadSamples.bind( this ) }
                         addRecipe={ this.addRecipe.bind( this ) }
@@ -74,7 +74,7 @@ class App extends React.Component {
 
 
     componentWillUnMount() {
-       database.removeBinding( this.ref );
+       firebase.removeBinding( this.ref );
     }
 
     static propTypes = {
