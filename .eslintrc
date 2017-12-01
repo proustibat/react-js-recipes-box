@@ -10,7 +10,8 @@
   ],
   "rules": {
     "max-len": [1, 120, 2, { "ignoreComments": true } ],
-    "prop-types": [2]
+    "prop-types": [2],
+    "react/prefer-stateless-function": [2]
   },
   "extends": [ "eslint:recommended", "plugin:react/recommended" ]
 }

@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// components
+import { Profiles } from './index'
+
 class Connexion extends React.Component {
 
     goToApp( event ) {
@@ -30,7 +33,7 @@ class Connexion extends React.Component {
                            ref={ input => { this.boxInput = input } }
                     />
                     <button type="submit">Go</button>
-                    <p>Pas de caractères spéciaux.</p>
+                    <p className="no-special-chars">Pas de caractères spéciaux.</p>
                 </form>
             </div>
         );
