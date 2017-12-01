@@ -4,12 +4,18 @@ import { render }   from 'react-dom';
 // components
 import { App, NotFound, Home } from './components';
 
+
 // router
 import { BrowserRouter, Match, Miss } from 'react-router';
 
-// css
-import './index.css';
+//bootstrap
+import * as ReactBootstrap from 'react-bootstrap';
 
+// css
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap-theme.min.css';
+
+import './style/index.css';
 
 const Root = () => {
 

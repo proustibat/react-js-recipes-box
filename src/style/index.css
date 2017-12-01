@@ -1,0 +1,14 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    /*background-color: #eee;*/
+}
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@import 'connexion.css';
+@import 'profile.css';
+@import 'box-recipes.css';

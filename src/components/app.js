@@ -56,7 +56,7 @@ class App extends React.Component {
             );
 
         return (
-            <div className="box">
+            <div className="container box-recipes">
                 <Header pseudo={ this.props.params.pseudo } />
                 <div className="cards">
                     { cards }

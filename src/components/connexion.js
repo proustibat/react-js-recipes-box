@@ -23,19 +23,20 @@ class Connexion extends React.Component {
     render() {
 
         return (
-            <div className="connexionBox">
-                <form className="connexion" onSubmit={ this.goToApp.bind( this ) }>
-                    <h1>Ma Boîte à Recettes</h1>
+            <div className="container connexion">
+                <form className="form-signin" role="form" onSubmit={ this.goToApp.bind( this ) }>
+                    <h1 className="form-signin-heading">Recipe Box</h1>
                     <input type="text"
+                           className="form-control"
                            placeholder="Nom du Chef"
                            pattern="[A-Za-z-]{1,}"
                            required
-                           ref={ input => { this.boxInput = input } }
-                    />
-                    <button type="submit">Go</button>
+                           ref={ input => { this.boxInput = input } } />
+                    <button className="btn btn-lg btn-primary btn-block" type="submit">Go</button>
                     <p className="no-special-chars">Pas de caractères spéciaux.</p>
                 </form>
             </div>
+
         );
 
     }

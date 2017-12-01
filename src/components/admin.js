@@ -12,8 +12,8 @@ import firebase from '../database';
 class Admin extends React.Component {
 
     state = {
-      uid: null,
-      owner: null
+        uid: null,
+        owner: null
     };
 
     componentDidMount() {
@@ -63,7 +63,6 @@ class Admin extends React.Component {
                         value={ recette.instructions }
                         onChange={ this.onChangeRecipe.bind(this, key) }
                     />
-
                 </form>
                 <button onClick={ this.props.deleteRecipe.bind( this, key ) }>Supprimer</button>
             </div>
@@ -147,20 +146,28 @@ class Admin extends React.Component {
             );
         }
 
-        const adminCards = Object.keys( this.props.recettes ).map( this.renderAdmin.bind( this ) );
+        const adminCards =
+            <div className="cards">
+                { Object.keys( this.props.recettes ).map( this.renderAdmin.bind( this ) ) }
+                <div className="card hidden-sm-down" />
+            </div>;
 
         return (
-            <div className="cards">
+            <div className="admin">
+                <h1>Administration</h1>
                 <AddRecipe
                     addRecipe={ this.props.addRecipe.bind( this ) }
                     updateRecipe={ this.props.updateRecipe.bind( this ) }
                 />
+
                 { adminCards }
+
                 <footer>
                     <button onClick={ this.props.loadSamples.bind( this ) }>Load Samples</button>
                     { logoutBtn }
                 </footer>
             </div>
+
         );
     }
 

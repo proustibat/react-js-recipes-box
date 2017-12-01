@@ -1,0 +1,57 @@
+.profiles .card {
+    padding-top: 20px;
+    margin: 10px 0 20px 0;
+    border-top-width: 0;
+    border-bottom-width: 2px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.profiles .card.hovercard .cardheader {
+    background: rgba(0, 139, 139, 1);
+    background-size: cover;
+    height: 60px;
+}
+
+.profiles .card.hovercard {
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+    text-align: center;
+    background-color: rgba(0, 139, 139, 0.2);
+    box-shadow: 0 1px 2px rgba(47, 79, 79, 0.5);
+    transition: all 0.2s ease-in-out;
+}
+
+.profiles .card.hovercard:hover {
+    transform: scale(1.04);
+    box-shadow: 0 5px 10px rgba(47, 79, 79, 0.6);
+}
+
+.profiles .card.hovercard .avatar {
+    position: relative;
+    top: -50px;
+    margin-bottom: -50px;
+}
+
+.profiles .card.hovercard .avatar img {
+    width: 100px;
+    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+}
+
+.profiles .card.hovercard .info {
+    padding: 4px 8px 10px;
+}
+
+.profiles .card.hovercard .info .title {
+    margin-bottom: 4px;
+    font-size: 24px;
+    line-height: 1;
+    color: darkcyan;
+    vertical-align: middle;
+}

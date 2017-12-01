@@ -15,12 +15,12 @@ class Card extends React.Component {
             .map( ( item, id ) => <li key={ id }>{ item }</li> );
 
         return (
-            <div className="card">
-                <div className="image"><img src={ this.props.details.image } alt={ this.props.details.nom } /></div>
-                <div className="recette">
+            <div className="card hover-3">
+                <div><img className="img-responsive" src={ this.props.details.image } alt={ this.props.details.nom } /></div>
+                <div className="recipe">
                     <h2>{ this.props.details.nom }</h2>
-                    <ul className="liste-ingredients">{ ingredients }</ul>
-                    <ol className="liste-instructions">{ instructions }</ol>
+                    <ul className="list-ingredients">{ ingredients }</ul>
+                    <ol className="list-instructions">{ instructions }</ol>
                 </div>
             </div>
         );
