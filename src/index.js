@@ -14,7 +14,7 @@ import './index.css';
 const Root = () => {
 
     return (
-        <BrowserRouter /*basename={process.env.PUBLIC_URL}*/>
+        <BrowserRouter /*basename={process.env.PUBLIC_URL}*/ >
             <div>
                 <Match exactly pattern="/" component={ Connexion } />
                 <Match pattern="/box/:pseudo" component={ App } />
