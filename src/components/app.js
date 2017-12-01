@@ -1,5 +1,6 @@
 // React
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Components
 import { Header, Admin, Card } from './';
@@ -78,8 +79,8 @@ class App extends React.Component {
     }
 
     static propTypes = {
-        params: React.PropTypes.shape({
-            pseudo: React.PropTypes.string.isRequired,
+        params: PropTypes.shape({
+            pseudo: PropTypes.string.isRequired,
         })
     }
 }

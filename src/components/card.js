@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 
 class Card extends React.Component {
@@ -26,11 +27,11 @@ class Card extends React.Component {
     }
 
     static propTypes = {
-        details: React.PropTypes.shape({
-            image:          React.PropTypes.string.isRequired,
-            ingredients:    React.PropTypes.string.isRequired,
-            instructions:   React.PropTypes.string.isRequired,
-            nom:            React.PropTypes.string.isRequired,
+        details: PropTypes.shape({
+            image:          PropTypes.string.isRequired,
+            ingredients:    PropTypes.string.isRequired,
+            instructions:   PropTypes.string.isRequired,
+            nom:            PropTypes.string.isRequired,
         }),
     }
 

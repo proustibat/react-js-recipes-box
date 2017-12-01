@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // components
 import { AddRecipe } from './';
@@ -164,12 +165,12 @@ class Admin extends React.Component {
     }
 
     static propTypes = {
-        recettes: React.PropTypes.object.isRequired,
-        loadSamples: React.PropTypes.func.isRequired,
-        addRecipe: React.PropTypes.func.isRequired,
-        updateRecipe: React.PropTypes.func.isRequired,
-        deleteRecipe: React.PropTypes.func.isRequired,
-        currentPagePseudo: React.PropTypes.string.isRequired,
+        recettes: PropTypes.object.isRequired,
+        loadSamples: PropTypes.func.isRequired,
+        addRecipe: PropTypes.func.isRequired,
+        updateRecipe: PropTypes.func.isRequired,
+        deleteRecipe: PropTypes.func.isRequired,
+        currentPagePseudo: PropTypes.string.isRequired,
     }
 
 }

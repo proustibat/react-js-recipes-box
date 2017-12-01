@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Header extends React.Component {
 
@@ -15,7 +16,7 @@ class Header extends React.Component {
     }
 
     static propTypes = {
-        pseudo: React.PropTypes.string.isRequired
+        pseudo: PropTypes.string.isRequired
     }
 
 }

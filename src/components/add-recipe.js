@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 
 class AddRecipe extends React.Component {
@@ -50,7 +52,7 @@ class AddRecipe extends React.Component {
 
 
     static propTypes = {
-        addRecipe: React.PropTypes.func.isRequired,
+        addRecipe: PropTypes.func.isRequired,
     }
 
 }
