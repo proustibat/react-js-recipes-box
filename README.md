@@ -1,4 +1,4 @@
-# React JS Recipes Box
+# React JS Recipes Box  [![GitHub top language](https://img.shields.io/github/languages/top/proustibat/react-js-recipes-box.svg)](https://github.com/proustibat/react-js-recipes-box)
 
 Based on Udemy tutorial by Anthony Welc (https://twitter.com/@AnthoWelc)
 
